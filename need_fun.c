@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * search_for_env - copy string in heap
