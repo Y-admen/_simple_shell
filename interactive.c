@@ -1,8 +1,9 @@
 #include "main.h"
 
-void interactiv(char *list_arg)
+void interactiv(char **argv)
 {
-	char *prompt = "$ ", **arr = NULL, *buff = NULL, *lineptr = NULL, *str, *command_copy;
+	char prompt = "$ ", **arr = NULL, *buff = NULL, *str = NULL,
+	*command_path = NULL;
 	size_t buf_size = 0;
 	int  i = 1, status = 0;
 
@@ -15,12 +16,25 @@ void interactiv(char *list_arg)
 			exit(0);
 		}
 		str = remove_comment(buff);
-		arr = _strtock(str);
-		if (check_built_in(list_arg[0], command_copy, environ, &status))
-			continue;
+		arr = _strtock(str, " \n\t");
+		free(buff);
+		if (!check_built_in(arr, status, argv))
+			{
+				command_path = get_path(arr);
+				if (!command_path)
+				{
+					show_error(argv, i, arr[0], "not found\n");
+					status = 127;
+				}
+				else
+					exec_command(command_path, arr, &status);
+			
 
-
-		
+			}
+			free(command_path);
+	free(arr);
+	free(str);
+	
 	i++;	
 	}
 }
