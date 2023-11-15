@@ -1,6 +1,6 @@
 #include"main.h"
 
-void remove_comment(char *str)
+char remove_comment(char *str)
 {
 	int i = 0;
 
