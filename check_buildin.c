@@ -1,7 +1,7 @@
 #include"main.h"
 
 
-check_built_in(char **arr, int *status, char *list_arg)
+int check_built_in(char **arr, int *status, char *list_arg)
 {
 	char *builtin_command[] = {"exit", "env",
 	"setenv", "unsetenv", "cd"};
@@ -38,4 +38,5 @@ check_built_in(char **arr, int *status, char *list_arg)
 		flag = 0;
 		break;
 	return (flag);
+	}
 }
