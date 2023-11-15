@@ -15,6 +15,7 @@
 #include <signal.h>
 #include <dirent.h>
 
+extern char **environ;
 
 void interactiv(char *list_arg);
 void non_interactive (char *list_arg);

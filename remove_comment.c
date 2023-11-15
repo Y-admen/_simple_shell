@@ -16,5 +16,5 @@ void remove_comment(char *str)
 		}
 		i++;
 	}
-	return(str);
+	return (str);
 }

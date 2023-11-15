@@ -37,6 +37,5 @@ check_built_in(char **arr, int *status, char *list_arg)
 	case 4:
 		flag = 0;
 		break;
-	
-	return(flag);
+	return (flag);
 }
