@@ -24,6 +24,7 @@ void non_interactive (char *list_arg);
 
 int check_built_in(char **arr, int status, char **list_arg);
 char *get_path(char *command);
+void exec_command(char *command, char **command_and_argu, int *status);
 
 
 char **process_env_var(char **arr, int status);
