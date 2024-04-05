@@ -8,10 +8,7 @@
  */
 void interactive(void)
 {
-	char *prompt = "$ ";
-	char *buff = NULL;
-	char *str;
-	char *command_copy = NULL;
+	char *prompt = "$ ", *buff = NULL, *str, *command_copy = NULL;
 	size_t buf_size = 0;
 	ssize_t line;
 
@@ -26,7 +23,7 @@ void interactive(void)
 			exit(0);
 		}
 		str = remove_comment(buff);
-		command_copy = _strtock(str, " ");
+		command_copy = _strtok(str, " ");
 		execute_command(&command_copy);
 
 		free(str);

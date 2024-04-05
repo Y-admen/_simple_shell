@@ -1,25 +1,36 @@
 #include "main.h"
 
 
+
 /**
- * exit_shell - Exits the shell with success return code.
+ * exit_shell - Exit the shell program
+ * @args: Unused argument, required for function pointer compatibility
  *
- * Return: 0 on success, 1 on failure.
+ * This function exits the shell program with a successful exit status.
+ *
+ * Return: Always 0 to indicate successful exit
  */
-int exit_shell(void)
+int exit_shell(char **args)
 {
+	(void)args;
 	exit(EXIT_SUCCESS);
+
 	return (0);
 }
 
 /**
- * print_env - Prints the environment variables to stdout.
+ * print_env - Print the current environment variables
+ * @args: Unused argument, required for function pointer compatibility
  *
- * Return: 0 on success, 1 on failure.
+ * This function prints all the current environment variables to the console.
+ *
+ * Return: Always 0 to indicate successful execution
  */
-int print_env(void)
+int print_env(char **args)
 {
 	int i;
+
+	(void)args;
 
 	for (i = 0; environ[i] != NULL; i++)
 	{

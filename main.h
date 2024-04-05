@@ -31,14 +31,14 @@ char *remove_comment(char *str);
 int check_built_in(char **args);
 int execute_command(char **args);
 char *get_cmd_path(char *cmd);
-int print_env(void);
 int set_env(char **args);
 int unset_env(char **args);
 int change_directory(char **args);
-int exit_shell(void);
+int exit_shell(char **args);
+int print_env(char **args);
 
 
-char *_strtock(char *str, const char *delimit);
+char *_strtok(char *str, const char *delimit);
 ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
 
 #endif
