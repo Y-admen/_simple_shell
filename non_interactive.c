@@ -11,7 +11,7 @@
  */
 void non_interactive(void)
 {
-	char *buff = NULL, *str, *command_copy = NULL;
+	char *buff = NULL, *command_copy = NULL;
 	size_t buf_size = 0;
 	ssize_t line;
 
@@ -23,10 +23,11 @@ void non_interactive(void)
 			break;
 		}
 
-		str = remove_comment(buff);
-		command_copy = _strtok(str, " ");
+		buff[strcspn(buff, "\n")] = 0;
+		command_copy = _strtok(buff, " ");
 		execute_command(&command_copy);
 
-		free(str);
+		free(buff);
+		buff = NULL;
 	}
 }
