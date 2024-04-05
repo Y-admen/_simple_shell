@@ -1,10 +1,15 @@
 #include "main.h"
 
-int main(__atribute__((unused)) int argc, char **argv)
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
 {
 	if (isatty(STDIN_FILENO))
-		interactive(argv[0]);
+		interactive();
 	else
-		non_interactive(argv[0]);
+		non_interactive();
 	return (0);
 }

@@ -1,31 +1,32 @@
 #include"main.h"
-
-char *get_location(char *command)
+/**
+ * get_cmd_path - Gets the path of a command from PATH
+ * @cmd: The command name
+ *
+ * Return: Pointer to the command path if found, NULL if not
+ */
+char *get_cmd_path(char *cmd)
 {
-	char *path, *path_copy, *path_token, *file_path, *command_copy,
-	*command_token;
-	int command_len, directory_len;
-	struct stat buffer;
+	char *path = getenv("PATH"), *cmd_path;
+	char *path_copy = strdup(path);
+	char *dir = strtok(path_copy, ":");
 
-	path = _get_env("PATH");
-	path_copy = _strdup(path);
-	path_token = _strtok(path_copy, ":");
-	
-	command_copy = _strdup(command);
-	command_token = _strtok(command_copy, " \n");
-
-	if ((access(command_token, F_OK | X_OK) == 0) &&
-	((line_copy[0] == '/') || (line_copy[1] == '/')))
+	while (dir != NULL)
 	{
-		free(path_copy);
-		free(path_token);
-		return (command_copy);
+		cmd_path = malloc(strlen(dir) + strlen(cmd) + 2);
+		strcpy(cmd_path, dir);
+		strcat(cmd_path, "/");
+		strcat(cmd_path, cmd);
+
+		if (access(cmd_path, F_OK) == 0)
+		{
+			free(path_copy);
+			return (cmd_path);
+		}
+
+		free(cmd_path);
+		dir = strtok(NULL, ":");
 	}
-	command_len = _strlen(command);
-	directory_len = _strlen(path_token);
-	
-	file_path = malloc(command_len + directory_len + 2);
-	strcpy(file_path, path_token);
-	strcat(file_path, "/");
-	strcat(file_path, command);
-	strcat(file_path, "\0");
+	free(path_copy);
+	return (NULL);
+}
