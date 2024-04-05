@@ -35,5 +35,5 @@ ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 	*lineptr = buffer;
 	*n = i;
 
-	return ((ch == EOF && i == 0) ? -1 : i);
+	return ((ch == EOF && i == 0) ? (ssize_t)-1 : (ssize_t)i);
 }
