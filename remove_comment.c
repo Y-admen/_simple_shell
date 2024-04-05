@@ -42,7 +42,14 @@ int execute_command(char **args)
 	if (check_built_in(args) == 0)
 		return (1);
 
-	cmd_path = get_cmd_path(args[0]);
+	if (args[0][0] == '/')
+	{
+		cmd_path = strdup(args[0]);
+	}
+	else
+	{
+		cmd_path = get_cmd_path(args[0]);
+	}
 	if (cmd_path != NULL)
 	{
 		pid = fork();
@@ -60,7 +67,8 @@ int execute_command(char **args)
 		}
 		else
 		{
-			do {
+			do
+			{
 				waitpid(pid, &status, WUNTRACED);
 			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 		}
